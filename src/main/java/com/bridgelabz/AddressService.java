@@ -12,6 +12,10 @@ public class AddressService implements IAddress {
     ArrayList<Address> book =new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
+    public void createAddressBook(){
+
+    }
+
     @Override
     public void add() {
 
@@ -30,7 +34,16 @@ public class AddressService implements IAddress {
         addressService.setZip(scanner.nextInt());
         System.out.println("Enter your phone number");
         addressService.setPhone(scanner.next());
-        book.add(addressService);
+        book.stream().forEach( n ->{
+            if (n.getFirstname().equals(addressService.getFirstname())){
+                System.out.println("Duplicate");
+            }
+            else {
+                book.add(addressService);
+            }
+        });
+        if(book.size()==0)
+            book.add(addressService);
     }
 
     @Override

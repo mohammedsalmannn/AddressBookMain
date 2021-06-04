@@ -25,6 +25,9 @@ public class AddressBook {
                 case 2:
                     object.edit();
                     break;
+                case 3:
+                    object.delete();
+                    break;
                 default:System.out.println("Invalid option");
             }
             System.out.println("Do you want to continue?(0/1)");
