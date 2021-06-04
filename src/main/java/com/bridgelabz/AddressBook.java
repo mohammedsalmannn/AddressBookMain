@@ -33,6 +33,12 @@ public class AddressBook {
                 case 4:
                     object.Search();
                     break;
+                case 5:
+                    object.displayCity();
+                    break;
+                case 6:
+                    object.displayState();
+                    break;
                 default:System.out.println("Invalid option");
             }
             System.out.println("Do you want to continue?(0/1)");
