@@ -154,4 +154,20 @@ public class AddressService implements IAddress {
             System.out.println("State is "+n.getState()+"& Name is: "+n.getFirstname());
         });
     }
+    @Override
+    public void sortName() {
+        book.stream().sorted(ComparatorMethod.nameComparator);
+    }
+    @Override
+    public void sortState() {
+        book.stream().sorted(ComparatorMethod.stateComparator);
+    }
+    @Override
+    public void sortCity() {
+        book.stream().sorted(ComparatorMethod.cityComparator);
+    }
+    @Override
+    public void sortZip() {
+        book.stream().sorted(ComparatorMethod.zipComparator);
+    }
 }

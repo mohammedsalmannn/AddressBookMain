@@ -12,4 +12,12 @@ public interface IAddress {
     void displayCity();
 
     void displayState();
+
+    void sortName();
+
+    void sortState();
+
+    void sortCity();
+
+    void sortZip();
 }

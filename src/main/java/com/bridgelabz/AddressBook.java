@@ -18,6 +18,9 @@ public class AddressBook {
             System.out.println("2.Edit a contact");
             System.out.println("3.Delete a contact");
             System.out.println("4.Search a contact");
+            System.out.println("5.Display city");
+            System.out.println("6.Display State");
+            System.out.println("7.Sort by Name");
             input = scanner.nextInt();
             switch(input)
             {
@@ -39,6 +42,18 @@ public class AddressBook {
                 case 6:
                     object.displayState();
                     break;
+                case 7:
+                    object.sortName();
+                    break;
+                    case 8:
+                      object.sortCity();
+                        break;
+                    case 9:
+                        object.sortState();
+                        break;
+                    case 10:
+                        object.sortZip();
+                        break;
                 default:System.out.println("Invalid option");
             }
             System.out.println("Do you want to continue?(0/1)");
