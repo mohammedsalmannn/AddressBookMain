@@ -6,12 +6,14 @@ com/bridgelabz/ComparatorMethod.java
  com.bridgelabz.ComparatorMethod$2
  com.bridgelabz.ComparatorMethod$3
  com.bridgelabz.ComparatorMethod$4
-com/bridgelabz/Contact.java
- com.bridgelabz.Contact
-com/bridgelabz/AddressBook.java
- com.bridgelabz.AddressBook
 com/bridgelabz/AddressBookFileIO.java
  com.bridgelabz.AddressBookFileIO
+com/bridgelabz/Contacts.java
+ com.bridgelabz.Contacts
+com/bridgelabz/AddressBookJSON.java
+ com.bridgelabz.AddressBookJSON
+com/bridgelabz/AddressBook.java
+ com.bridgelabz.AddressBook
 com/bridgelabz/AddressBookMain.java
  com.bridgelabz.AddressBookMain
 com/bridgelabz/AddressBookCSV.java

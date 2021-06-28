@@ -19,8 +19,8 @@ public class AddressBookCSV {
     public static void writeDataToCSV() throws IOException, CsvRequiredFieldEmptyException, CsvDataTypeMismatchException {
 
         try (Writer writer = Files.newBufferedWriter(Paths.get("Contacts.csv"));) {
-            StatefulBeanToCsvBuilder<Contact> builder = new StatefulBeanToCsvBuilder<>(writer);
-            StatefulBeanToCsv<Contact> beanWriter = builder.build();
+            StatefulBeanToCsvBuilder<Contacts> builder = new StatefulBeanToCsvBuilder<>(writer);
+            StatefulBeanToCsv<Contacts> beanWriter = builder.build();
             beanWriter.write(AddressBook.contactList);
             writer.close();
         } catch (IOException e) {

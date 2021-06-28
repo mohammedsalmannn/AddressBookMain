@@ -1,21 +1,20 @@
 package com.bridgelabz;
 
-
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AddressBook {
-    public static final ArrayList<Contact> contactList = new ArrayList<>();
-    public static Map<String, Contact> nameHashMap = new HashMap<String, Contact>();
-    public static Map<String, Contact> cityHashMap = new HashMap<String, Contact>();
-    public static Map<String, Contact> stateHashMap = new HashMap<String, Contact>();
+    public static final ArrayList<Contacts> contactList = new ArrayList<>();
+    public static Map<String, Contacts> nameHashMap = new HashMap<String, Contacts>();
+    public static Map<String, Contacts> cityHashMap = new HashMap<String, Contacts>();
+    public static Map<String, Contacts> stateHashMap = new HashMap<String, Contacts>();
     static Scanner sc = new Scanner(System.in);
     static AddressBook addressBook = new AddressBook();
 
-    public static boolean addContact(Contact contact) {
-        List<Contact> checkByName = searchByName(contact.getfName());
-        for (Contact equalName : checkByName) {
+    public static boolean   addContact(Contacts contact) {
+        List<Contacts> checkByName = searchByName(contact.getfName());
+        for (Contacts equalName : checkByName) {
             if (equalName.equals(contact))
                 return false;
         }
@@ -26,40 +25,40 @@ public class AddressBook {
         return true;
     }
     //method for search contact by name
-    public static List<Contact> searchByName(String name) {//collection list of element
+    public static List<Contacts> searchByName(String name) {//collection list of element
         //stream and lambda for find filter given name from arraylist
         return contactList.stream().filter(person -> person.getfName().equalsIgnoreCase(name)).collect(Collectors.toList());
     }
     //method for search contact by City
-    public static List<Contact> searchByCity(String city) {
+    public static List<Contacts> searchByCity(String city) {
         return contactList.stream().filter(person -> person.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
     }
     //method for search contact by State
-    public static List<Contact> searchByState(String state) {
+    public static List<Contacts> searchByState(String state) {
         return contactList.stream().filter(person -> person.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
     }
     //method for view contact by name
-    public static void viewByName(Map<String, Contact> nameHashMap) {
+    public static void viewByName(Map<String, Contacts> nameHashMap) {
         nameHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "="+ e.getValue().toString()));
     }
     //method for view contact by city
-    public static void viewByCity(Map<String, Contact> cityHashMap) {
+    public static void viewByCity(Map<String, Contacts> cityHashMap) {
         cityHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "="+ e.getValue().toString()));
     }
     //method for view contact by State
-    public static void viewByState(Map<String, Contact> stateHashMap) {
+    public static void viewByState(Map<String, Contacts> stateHashMap) {
         stateHashMap.entrySet().stream().forEach(e -> System.out.println(e.getKey() + "="+ e.getValue().toString()));
     }
     //method for sort contact by name, city, state
-    public List<Contact> sortBy(Function<? super Contact, ? extends String> key) {
+    public List<Contacts> sortBy(Function<? super Contacts, ? extends String> key) {
         return contactList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
     }
     //method for sort contact by zip
-    public List<Contact> sortByZip(Function<? super Contact, ? extends Long> key) {
+    public List<Contacts> sortByZip(Function<? super Contacts, ? extends Long> key) {
         return contactList.stream().sorted(Comparator.comparing(key)).collect(Collectors.toList());
     }
     //method for edit contact
-    public static boolean editContact(Contact current, Contact editedContact) {
+    public static boolean editContact(Contacts current, Contacts editedContact) {
         if (!contactList.contains(current)){
             return false;
         }
@@ -68,7 +67,7 @@ public class AddressBook {
         return true;
     }
     //method for delete contact
-    public static boolean deleteContact(Contact contacts) {
+    public static boolean deleteContact(Contacts contacts) {
         contactList.remove(contacts);
         return true;
     }
@@ -84,7 +83,7 @@ public class AddressBook {
         return result;
     }
     //method for adding details
-    public static Contact readContact() {
+    public static Contacts readContact() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter First Name: ");
         String firstName = sc.nextLine();
@@ -104,7 +103,7 @@ public class AddressBook {
         sc.nextLine();
         System.out.print("Enter Email ID: ");
         String email = sc.nextLine();
-        return new Contact(firstName, lastName, address, city, state, zip, phoneNum, email);
+        return new Contacts(firstName, lastName, address, city, state, zip, phoneNum, email);
     }
     //method for show option for contacts
     public void addressBookOptions(AddressBook addressBook) {
@@ -130,7 +129,7 @@ public class AddressBook {
                 case 2:
                     System.out.println("Enter First name to edit contact: ");
                     String name = sc.nextLine();
-                    List<Contact> equalName = searchByName(name);//list of equal first name
+                    List<Contacts> equalName = searchByName(name);//list of equal first name
                     if (equalName.isEmpty())//if not match found
                         System.out.println("Data Not Found....!");
                     else if (equalName.size() == 1) {//if only one equal match found
@@ -165,7 +164,8 @@ public class AddressBook {
                     }
                     break;
                 case 4:
-                    System.out.println(toString()); //call tostring method for showing details
+                    //call toString method for showing details
+                    System.out.println(toString());
                     break;
                 case 5:
                     sortByOption();
@@ -178,6 +178,7 @@ public class AddressBook {
             }
         }
     }
+
     //method for search contacts by option
     public static void searchByOptions() {
         System.out.println("1. Search By name");
@@ -209,6 +210,7 @@ public class AddressBook {
                 System.out.println("INVALID CHOICE!");
         }
     }
+
     //method for view element by option
     public static void viewByOption(Map<String, AddressBook> addressBookMap) {
         System.out.println("1. View By name");
@@ -270,19 +272,19 @@ public class AddressBook {
         sc.nextLine();
         switch (choice) {
             case 1:
-                addressBook.sortBy(Contact::getfName).forEach(System.out::println);
+                addressBook.sortBy(Contacts::getfName).forEach(System.out::println);
                 break;
             case 2:
-                addressBook.sortBy(Contact::getlName).forEach(System.out::println);
+                addressBook.sortBy(Contacts::getlName).forEach(System.out::println);
                 break;
             case 3:
-                addressBook.sortBy(Contact::getCity).forEach(System.out::println);
+                addressBook.sortBy(Contacts::getCity).forEach(System.out::println);
                 break;
             case 4:
-                addressBook.sortBy(Contact::getState).forEach(System.out::println);
+                addressBook.sortBy(Contacts::getState).forEach(System.out::println);
                 break;
             case 5:
-                addressBook.sortByZip(Contact::getZip).forEach(System.out::println);
+                addressBook.sortByZip(Contacts::getZip).forEach(System.out::println);
                 break;
             case 6:
                 return;
